@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>/start Message Preview</title>
+</head>
+<body>
+  <h1>/start Message Preview</h1>
+  <div id="preview"></div>
+
+  <script>
+    // Simulate Telegram message
+    const username = 'TestUser'; // Replace with a test username
+
+    // Fetch the JSON data
+    fetch('https://test3-of9y.onrender.com/data/links.json')
+      .then(response => response.json())
+      .then(data => {
+        const previewDiv = document.getElementById('preview');
+        if (data && data.links && data.links.length > 0) {
+          const lastLink = data.links[data.links.length - 1];
+
+          // Format the welcome message
+          let welcomeMessage = `Welcome to MEMEX ARMY, @${username}!\\n\\n`;
+          welcomeMessage += `⭐️ The latest task added by ${lastLink.username} on ${lastLink.platform}<br>`;
+          welcomeMessage += `✅ Now support as a MemeX ARMY`;
+
+          // Display the message
+          previewDiv.innerHTML = `
+            <img src="https://memex.planc.space/images/gorsel.jpg" alt="MemeX Image"><br><br>
+            <p>${welcomeMessage.replace(/\\n/g, '<br>')}</p>
+            <a href="${lastLink.url}">Link</a>
+          `;
+        } else {
+          previewDiv.textContent = 'No tasks have been processed yet.';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        document.getElementById('preview').textContent = 'Error fetching data.';
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "memex-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot to fetch and share MemeX community links",
+  "main": "bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "node-fetch": "^3.3.2",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
